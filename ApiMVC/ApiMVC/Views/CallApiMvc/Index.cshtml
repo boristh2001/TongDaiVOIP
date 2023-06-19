@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section jsHeader{
+    <script src="~/Assets/Contact/js/bootstrap.min.js"></script>
+    <script src="~/Assets/Contact/js/init.js"></script>
+    <script src="~/Assets/Contact/js/jquery.min.js"></script>
+
+    <link href="~/Assets/Contact/css/all.css" rel="stylesheet" />
+    <link href="~/Assets/Contact/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Assets/Contact/css/main.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/a36c5d7fce.js" crossorigin="anonymous"></script>
+}
+
+<div class="container">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <form id="mdlDemo">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="col-md-12 col-sm-12 col-xs-12"><h4 id="myModalLabel">SIP Credenitals</h4></div>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-group col-md-6 col-sm-12 col-xs-12">
+                        <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                            <label>Name Extension:</label>
+                            <input type="text" name="Display" class="form-control" placeholder="Ex: 100" required>
+                        </div>
+                        <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                            <label>SIP extension:</label>
+                            <input type="text" name="User" class="form-control" placeholder="Ex: 100" autocomplete="off" required>
+                        </div>
+                        <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                            <label>Password:</label>
+                            <input type="password" name="Pass" class="form-control" placeholder="SIP password" autocomplete="off" required>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6 col-sm-12 col-xs-12">
+                        <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                            <label>WSS URL:</label>
+                            <input type="text" name="WSServer" class="form-control" placeholder="Ex: wss://node1-100pl.voip24h.vn:8089/ws" autocomplete="off" required>
+                        </div>
+                        <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                            <label>Sip Realm:</label>
+                            <input type="text" name="Realm" class="form-control" placeholder="Ex: node1-100pl.voip24h.vn" autocomplete="off" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                        <button type="button" class="btn btn-primary" id="btnConfig">Save Setting</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

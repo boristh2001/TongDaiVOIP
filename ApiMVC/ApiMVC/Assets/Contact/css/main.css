@@ -1,0 +1,182 @@
+#sipClient {
+  background-color: transparent;
+  font-size: 13px;
+  line-height: 1.42857143;
+  /* firefox 19+ */
+  /* ie */
+}
+#sipClient p {
+  margin: 0;
+  padding: 0 0 10px 0;
+  line-height: 18px;
+}
+#txtRegStatus{ text-align:left:}
+#sipClient .sipStatus {
+  margin: 0px;
+  padding: 0px;
+  background:transparent;
+  color: #000;
+}
+#ipnkeyboardMain{
+	background: #ffffff;
+    margin-top: 7px;
+    margin-bottom: 5px;
+    border-radius: 11px;
+}
+.ipnkeyboard{
+	position:relative;
+}
+input#numDisplay{
+	outline: none;
+    border: none;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: #000;
+    background: transparent;
+    border-radius: unset;
+    height: 35px;
+		font-size: 22px;
+    font-weight: 600;
+		box-shadow: none;
+}
+.panel-default>.panel-heading {
+    color: #333;
+    background-color: #ffffff;
+    border-color: #fafafb;
+}
+#sipClient #txtCallStatus {
+ color: #286090;
+    font-weight: 600;
+    text-align: right;
+}
+#sipClient #sip-dialpad {
+      width: 292px;
+    padding: 16px 20px;
+    background: #fafafb;
+    border-radius: 10px;
+}
+#sipClient .digit:hover{
+	 background: #ffffff;
+    text-align: center;
+}
+#sipClient #sip-dialpad .col-xs-4 {
+  text-align: center;
+}
+#sipClient .digit {
+	box-shadow: none;
+  height: 66px;
+  width: 66px;
+  margin: 0 8px 14px !important;
+  background-color: #f8f8f8;
+	font-weight: 600;
+	outline: none;
+	border: none;
+  font-size: 24px;
+  border-radius: 100px;
+  line-height: 21px;
+  padding-top: 9px;
+  float: left;
+}
+#sipClient .digit.linecenter{
+	padding-top: 23px;
+}
+#sipClient .digit span {
+  display: block;
+  color: #999;
+  font-size: 10px;
+  font-weight: normal;
+}
+#sipClient .sip-panel h3 {
+  margin-top: 22px;
+}
+#sipClient #sip-splash {
+  height: 371px;
+}
+#sipClient #sip-splash .fa {
+  margin-bottom: 15px;
+}
+#sipClient #sip-splash .fa-circle {
+  color: #5cb85c;
+}
+#sipClient #sip-log .panel-heading {
+  padding: 10px 8px;
+	background: #fafafb;
+}
+.fa.fa-trash{
+	cursor:pointer;
+}
+#sipClient #sip-logitems {
+     min-height: 332px;
+    overflow: auto;
+    max-height: 480px;
+}
+#sipClient #sldVolume {
+      width: 100%;
+    margin: 0 auto;
+    box-shadow: none;
+    padding-left: 5px;
+    padding-right: 0px;
+		cursor: pointer;
+}
+#sipClient .sip-logitem {
+  padding: 15px;
+	cursor: pointer;
+}
+#sipClient .sip-logitem:hover{
+ background-color:#fcfdff;
+}
+#sipClient #numDisplay::-webkit-input-placeholder {
+  color: #bbb;
+}
+#sipClient #numDisplay::-moz-placeholder {
+  color: #bbb;
+}
+#sipClient #numDisplay::-ms-input-placeholder {
+  color: #bbb;
+}
+#sipClient #numDisplay::-moz-placeholder {
+  color: #bbb;
+}
+.reset-col{padding:0px;}
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin-top: 5px;
+    border: navajowhite;
+}
+button#AcbtnCallClean{
+	position: absolute;
+  top: 0px;
+  right: 0px;
+	display:none;
+}
+button#AcbtnCallClean.active{
+	position: absolute;
+    top: 0px;
+    right: 0px;
+    display: block;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    background: transparent;
+    outline: none;
+    border: none;
+    box-shadow: none;
+}
+.LavAcTivetrue{
+	background-color:#ffd400 !important;
+	background:#ffd400 !important;
+}
+.list-group-item.Vlabel_outgoing{
+	background: #190cd808;
+}
+.list-group-item.Vlabel_incoming{
+	background:#8cff0dad;
+}
+.fa.fa-fw.fa-bell.fa-fw{
+	color:red;
+}

@@ -1,0 +1,206 @@
+﻿
+@{
+    ViewBag.Title = "Call";
+
+}
+
+
+<script src="~/Assets/Contact/js/bootstrap.min.js"></script>
+<script src="~/Assets/Contact/js/jquery.min.js"></script>
+<script src="~/Assets/Contact/js/sip.js"></script>
+<script src="~/Assets/Contact/js/moment.min.js"></script>
+<script src="https://kit.fontawesome.com/a36c5d7fce.js" crossorigin="anonymous"></script>
+
+<link href="~/Assets/Contact/css/main.css" rel="stylesheet" />
+<link href="~/Assets/Contact/css/all.css" rel="stylesheet" />
+<link href="~/Assets/Contact/css/bootstrap.min.css" rel="stylesheet" />
+
+<script>
+/*===========================Khai báo mặc định và nạp user=========================*/
+    $(function () {
+        var user = JSON.parse(localStorage.getItem('SIPCreds'));
+        if (user) {
+            user = {
+                "User": user.User,
+                "Pass": user.Pass,
+                "Realm": user.Realm,
+                "Display": user.Display,
+                "WSServer": user.WSServer,
+            };
+        } else {
+            var url = '/CallApiMvc/Index';
+            window.location.replace(url);
+        }
+        $("#btnExit").click(function () {
+            localStorage.removeItem('SIPCreds');
+            location.reload(true);
+        });
+    });
+</script>
+<!--/*==================Khai báo mặc định khi load thư viện VoipSIP sau khi khởi nạp user===================*/-->
+<script type="text/javascript" src="~/Assets/Contact/js/VoipSIP.min.js"></script>
+<script>
+    // Xử lý nút GỌI
+    function callControllerAction() {
+        var inputData = document.getElementById('numDisplay').value;
+
+        // Tạo đối tượng XMLHttpRequest
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200)
+            {
+                // Xử lý kết quả trả về từ server
+                var response = JSON.parse(this.responseText);
+                // Lấy danh sách events từ kết quả trả về
+                var events = response.events;
+                console.log(events);
+            }
+        };
+        xhr.open('GET', '/CallApiMvc/CallApi?phone=' + inputData, true);
+        xhr.send();
+    };
+</script>
+<style>
+    .number-button {
+        font-size: 20px;
+        width: 60px;
+        height: 60px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        margin: 5px;
+        background-color: #f2f2f2;
+        color: #333;
+    }
+
+        .number-button:hover {
+            background-color: #ccc;
+            color: #fff;
+        }
+
+        .number-button:active {
+            background-color: #999;
+            color: #fff;
+        }
+
+    .call-button {
+        font-size: 20px;
+        width: 80px;
+        height: 30px;
+        border: 1px solid #4cae4c;
+        border-radius: 4px;
+        margin: 5px;
+        background-color: #5cb85c;
+        color: #fff;
+    }
+
+    .signout-button {
+        font-size: 20px;
+        width: 80px;
+        height: 30px;
+        border: 1px solid #d43f3a;
+        border-radius: 4px;
+        margin: 5px;
+        background-color: #d9534f;
+        color: #fff;
+    }
+
+    input {
+        font-size: 24px;
+        width: 180px;
+        height: 60px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 5px;
+        text-align: center;
+    }
+</style>
+
+<a href="@Url.Action("GetHistoryCall","CallHistory")">
+    Return to call history
+</a>
+<div class="container">
+    <div class="col-md-12 col-sm-12 col-xs-12 reset-col">
+        <div class="clearfix">&nbsp;</div>
+    </div>
+    <div class="col-md-12 col-sm-12 col-xs-12 reset-col">
+        <div class="col-md-4 col-sm-6 col-xs-12 reset-col">
+            <div class="col-md-12 col-sm-12 col-xs-12 reset-col" id="sip-dialpad">
+                <div class="col-md-12 col-sm-12 col-xs-12 reset-col sipStatus">
+                    <div class="col-md-6 col-sm-12 col-xs-12 reset-col" id="txtRegStatus"> </div>
+                    <div class="col-md-6 col-sm-12 col-xs-12 reset-col" id="txtCallStatus"> </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 reset-col" id="ipnkeyboardMain">
+                    <div class="col-md-12 col-sm-12 col-xs-12 reset-col" id="ipnkeyboard">
+                        <input type="text" name="number" id="numDisplay" class="form-control text-center input-sm" value="" autocomplete="off" />
+                        <button class="btn" id="AcbtnCallClean" title="Send"><i class="fa-solid fa-delete-left"></i></button>
+                    </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 reset-col"><div class="clearfix">&nbsp;</div> </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 reset-col">
+                    <div class="col-md-12 col-sm-12 col-xs-12 reset-col background">
+                        <button class="number-button  digit " type="button" data-digit="1">1</button>
+                        <button class="number-button digit" type="button" data-digit="2">2</button>
+                        <button class="number-button digit" type="button" data-digit="3">3</button>
+                        <br>
+                        <button class="number-button digit" type="button" data-digit="4">4</button>
+                        <button class="number-button digit" type="button" data-digit="5">5</button>
+                        <button class="number-button digit" type="button" data-digit="6">6</button>
+                        <br>
+                        <button class="number-button digit" type="button" data-digit="7">7</button>
+                        <button class="number-button digit" type="button" data-digit="8">8</button>
+                        <button class="number-button digit" type="button" data-digit="9">9</button>
+                        <br>
+                        <button class="number-button digit" type="button" data-digit="*">*</button>
+                        <button class="number-button digit" type="button" data-digit="0">0</button>
+                        <button class="number-button digit" type="button" data-digit="#">#</button>
+                        <br>
+                        <div classs="col-md-12 col-sm-12 col-xs-12 reset-col">
+                            <button class="call-button btn-success" id="phone" type="button" onclick="callControllerAction()"><i class="fa-solid fa-phone-flip"></i></button>
+                            <button class="signout-button btn-danger" id="btnExit"><i class="fa-solid fa-right-to-bracket"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 col-sm-12 col-xs-12 reset-col">
+            <div class="well-sip col-md-12 col-sm-12 col-xs-12 reset-col">
+                <div id="sip-splash" class="text-muted text-center">
+                    <div class="panel-body">
+                        <h4 class="page-header"><span> Lịch sử cuộc gọi</span></h4>
+                        <p class="lead">To make a call enter a number or SIP address in the box above.</p>
+                        <small>Closing this window will cause calls to go to voicemail.</small>
+                    </div>
+                </div>
+                <div id="sip-log" class="hide">
+                    <div class="panel-heading">
+                        <h4 class="text-muted panel-title">Cuộc gọi gần đây <span class="pull-right"><i class="fa fa-trash text-muted sipLogClear" title="Clear Log"></i></span></h4>
+                    </div>
+                    <div id="sip-logitems" class="list-group">
+                        <p class="text-muted text-center">Không có cuộc gọi nào trên trình duyệt.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 col-sm-12 col-xs-12 reset-col">
+        <div class="modal fade" id="mdlError" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Sip Error</h4>
+                    </div>
+                    <div class="modal-body text-center text-danger">
+                        <h3><i class="fa fa-3x fa-ban"></i></h3>
+                        <p class="lead">Sip registration failed. No calls can be handled.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<audio id="ringtone" src="~/Assets/Contact/sounds/incoming.mp3" loop></audio>
+<audio id="ringbacktone" src="~/Assets/Contact/sounds/outgoing.mp3" loop></audio>
+<audio id="dtmfTone" src="~/Assets/Contact/sounds/dtmf.mp3"></audio>
+<audio id="audioRemote"></audio>
+
+
